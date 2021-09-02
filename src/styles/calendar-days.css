@@ -1,0 +1,32 @@
+.calendar-days-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-template-columns: repeat(7, 30px);
+    /* grid-template-rows: repeat(5, 20px); */
+    row-gap: 5px;
+    column-gap: 5px;
+    /* justify-content: center; */
+    /* align-items: center; */
+}
+
+.day-item{
+    width: 100%;
+    height: 100%;
+    background-color: rgb(255, 255, 255);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: default;
+    border-radius: 5px;
+}
+
+.day-item:hover{
+    background-color: #BAEED1;
+    opacity: 1;
+    transition: all 0.4s ease;
+    
+}
