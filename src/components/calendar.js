@@ -59,11 +59,11 @@ const Calendar = () => {
         setDaysInMonth(objDaysOfMonth);
 
     }, [newMonth, year]);
-
+    
     return (
         daysInMonth.length > 0 && <div className="calendar-main-container">
             <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView}/>
-            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year}/>}
+            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year} changeView={changeView}/>}
             {changeView && <CalendarMonths setNewMonth={setNewMonth} setChangeView={setChangeView}/>}
         </div>
     );

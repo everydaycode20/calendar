@@ -40,10 +40,14 @@ const CalendarControl = ({ year, setNewMonth, newMonth, setYear, setChangeView, 
 
     }
 
+    const makeChangeView = () => {
+        setChangeView(true);
+    };
+
     return (
         <div className="calendar-control-container">
             <button onClick={() => prevMonth()}> <img src={ArrowLeft} alt="next month" /> </button>
-            {!changeView ? <button onClick={() => setChangeView(true)}>{months[newMonth]} {year}</button> : <button onClick={() => setChangeView(true)}>{year}</button>}
+            {!changeView ? <button onClick={() => makeChangeView()}>{months[newMonth]} {year}</button> : <button onClick={() => makeChangeView()}>{year}</button>}
             <button onClick={() => nextMonth()}><img src={ArrowLeft} alt="next month" className=""/> </button>
         </div>
     );
