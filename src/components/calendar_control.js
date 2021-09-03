@@ -12,12 +12,15 @@ const CalendarControl = ({ year, setNewMonth, newMonth, setYear, setChangeView, 
         
         if (changeView) {
             setYear(year - 1);
+            setNewMonth( prev => ({...prev, view: false}) );
         }
         else{
-            setNewMonth(newMonth - 1);
-
-            if (newMonth === 0) {
-                setNewMonth(11);
+            // setNewMonth(newMonth - 1);
+            setNewMonth(prev => ({...prev, month: newMonth.month - 1}));
+            
+            if (newMonth.month === 0) {
+                // setNewMonth(11);
+                setNewMonth(prev => ({...prev, month: 11 }));
                 setYear(year - 1);
             }
         }
@@ -28,12 +31,15 @@ const CalendarControl = ({ year, setNewMonth, newMonth, setYear, setChangeView, 
 
         if (changeView) {
             setYear(year + 1);
+            setNewMonth( prev => ({...prev, view: false}) );
         }
         else{
-            setNewMonth(newMonth + 1);
+            // setNewMonth(newMonth + 1);
+            setNewMonth(prev => ({...prev, month: newMonth.month + 1}));
 
-            if (newMonth >= 11) {
-                setNewMonth(0);
+            if (newMonth.month >= 11) {
+                // setNewMonth(0);
+                setNewMonth(prev => ({...prev, month: 0}));
                 setYear(year + 1);
             }
         }
@@ -42,12 +48,13 @@ const CalendarControl = ({ year, setNewMonth, newMonth, setYear, setChangeView, 
 
     const makeChangeView = () => {
         setChangeView(true);
+        setNewMonth( prev => ({...prev, view: false}) );
     };
 
     return (
         <div className="calendar-control-container">
             <button onClick={() => prevMonth()}> <img src={ArrowLeft} alt="next month" /> </button>
-            {!changeView ? <button onClick={() => makeChangeView()}>{months[newMonth]} {year}</button> : <button onClick={() => makeChangeView()}>{year}</button>}
+            {!changeView ? <button onClick={() => makeChangeView()}>{months[newMonth.month]} {year}</button> : <button onClick={() => makeChangeView()}>{year}</button>}
             <button onClick={() => nextMonth()}><img src={ArrowLeft} alt="next month" className=""/> </button>
         </div>
     );

@@ -10,7 +10,7 @@ const Calendar = () => {
 
     const [daysInMonth, setDaysInMonth] = useState([]);
 
-    const [newMonth, setNewMonth] = useState(new Date().getMonth());
+    const [newMonth, setNewMonth] = useState({ "month": new Date().getMonth(), "view": true });
 
     const [year, setYear] = useState(new Date().getFullYear());
     
@@ -21,12 +21,12 @@ const Calendar = () => {
     const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
     useEffect(() => {
-
+        
         let objDaysOfMonth = [];
 
         const tempYear = year;
         
-        const month = newMonth;
+        const month = newMonth.month;
 
         const date = new Date(tempYear, month , 1);
 
@@ -58,6 +58,13 @@ const Calendar = () => {
 
         setDaysInMonth(objDaysOfMonth);
 
+        if (newMonth.view === true) {
+            setChangeView(false);
+        }
+        else{
+            setChangeView(true);
+        }
+        
     }, [newMonth, year]);
     
     return (

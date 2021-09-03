@@ -1,14 +1,16 @@
+import React, {memo} from "react";
 
 import "../styles/calendar-months.css";
 
-const CalendarMonths = ({ setNewMonth, setChangeView }) => {
+const CalendarMonths = memo(({ setNewMonth, setChangeView }) => {
 
     const months = [ "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December" ];
 
     const getMonth = (index) => {
-        setNewMonth(index);
-        setChangeView(false);
+        // setNewMonth(index);
+        setNewMonth( prev => ({...prev, month: index, view: true}) )
+        // setChangeView(false);
     };
 
     return (
@@ -21,6 +23,6 @@ const CalendarMonths = ({ setNewMonth, setChangeView }) => {
             })}
         </div>
     );
-};
+});
 
 export default CalendarMonths;
