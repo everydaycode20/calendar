@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 
 import "../styles/calendar-days.css";
 
@@ -7,12 +7,19 @@ const CalendarDays = ({ newMonth, daysInMonth }) => {
     const months = [ "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December" ];
 
+    const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
+    
     const getDay = day => {
         console.log(day);
     };
     
     return (
-        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7}, 30px)`}}>
+        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7 + 1}, 30px)`}}>
+            
+                {daysOfWeek.map((day, index) => {
+                    return <span key={index}>{day.substring(0, 3)}</span>
+                })}
+            
             {daysInMonth.map((day, index) => {
 
                 return (

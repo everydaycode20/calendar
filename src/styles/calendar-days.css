@@ -6,11 +6,9 @@
     height: 100%;
     display: grid;
     grid-template-columns: repeat(7, 30px);
-    /* grid-template-rows: repeat(5, 20px); */
     row-gap: 5px;
     column-gap: 5px;
-    /* justify-content: center; */
-    /* align-items: center; */
+    justify-items: center;
 }
 
 .day-item{
@@ -28,5 +26,4 @@
     background-color: #BAEED1;
     opacity: 1;
     transition: all 0.4s ease;
-    
 }

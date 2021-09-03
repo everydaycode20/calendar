@@ -2,6 +2,7 @@ import React, {useState, useEffect} from "react";
 
 import CalendarDays from "./calendar_days";
 import CalendarControl from "./calendar_control";
+import CalendarMonths from "./calendar_months";
 
 import "../styles/calendar-main.css";
 
@@ -13,6 +14,8 @@ const Calendar = () => {
 
     const [year, setYear] = useState(new Date().getFullYear());
     
+    const [changeView, setChangeView] = useState(false);
+
     const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 
     const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -55,12 +58,13 @@ const Calendar = () => {
 
         setDaysInMonth(objDaysOfMonth);
 
-    }, [newMonth]);
+    }, [newMonth, year]);
 
     return (
         daysInMonth.length > 0 && <div className="calendar-main-container">
-            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth}/>
-            <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year}/>
+            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView}/>
+            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year}/>}
+            {changeView && <CalendarMonths setNewMonth={setNewMonth} setChangeView={setChangeView}/>}
         </div>
     );
 

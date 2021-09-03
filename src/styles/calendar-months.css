@@ -1,0 +1,16 @@
+.calendar-months-container{
+    display: grid;
+    grid-template-columns: repeat(4, 60px);
+    grid-template-rows: repeat(3, 60px);
+    justify-content: center;
+}
+.calendar-months-container button{
+    border: none;
+    background-color: rgb(239, 239, 239);
+}
+
+.calendar-months-container button:hover{
+    background-color: #bbbbbb;
+    opacity: 1;
+    transition: all 0.4s ease;
+}
