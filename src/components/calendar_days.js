@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "../styles/calendar-days.css";
 
-const CalendarDays = ({ newMonth, daysInMonth, changeView }) => {
+const CalendarDays = ({ newMonth, daysInMonth, changeView, leftOrRight }) => {
     
     const months = [ "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December" ];
@@ -10,13 +10,11 @@ const CalendarDays = ({ newMonth, daysInMonth, changeView }) => {
     const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
 
     const [isMounted, setIsMounted] = useState(false);
-
+    
     useEffect(() => {
-        
         setIsMounted(true);
         return () => {
-            
-            // setIsMounted(false);
+            setIsMounted(false);
         }
     }, []);
 
@@ -25,7 +23,7 @@ const CalendarDays = ({ newMonth, daysInMonth, changeView }) => {
     };
     
     return (
-        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7 + 1}, 30px)`}} >
+        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7 + 1}, 30px)`}} mounted={isMounted.toString()} pos={leftOrRight}>
             
                 {daysOfWeek.map((day, index) => {
                     return <span key={index}>{day.substring(0, 3)}</span>

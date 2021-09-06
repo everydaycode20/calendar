@@ -16,6 +16,8 @@ const Calendar = () => {
     
     const [changeView, setChangeView] = useState(false);
 
+    const [leftOrRight, setLeftOrRight] = useState("");
+
     const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 
     const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -69,8 +71,8 @@ const Calendar = () => {
     
     return (
         daysInMonth.length > 0 && <div className="calendar-main-container">
-            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView}/>
-            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year} changeView={changeView}/>}
+            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView} setLeftOrRight={setLeftOrRight}/>
+            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year} changeView={changeView} leftOrRight={leftOrRight}/>}
             {changeView && <CalendarMonths setNewMonth={setNewMonth} setChangeView={setChangeView}/>}
         </div>
     );

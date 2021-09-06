@@ -1,8 +1,21 @@
+[mount = "false"]{
+    --opacity: 0;
+    --scale: 1.2;
+}
+
+[mount = "true"]{
+    --opacity: 1;
+    --scale: 1;
+}
+
 .calendar-months-container{
     display: grid;
     grid-template-columns: repeat(4, 60px);
     grid-template-rows: repeat(3, 60px);
     justify-content: center;
+    opacity: var(--opacity);
+    transform: scale(var(--scale));
+    transition: transform 0.1s ease, opacity 0.1s ease-in;
 }
 .calendar-months-container button{
     border: none;
