@@ -9,10 +9,6 @@
     --anim: fadeIn 0.1s ease-in;
 }
 
-[pos = "left"]{
-    --trans: slide 0.1s ease-in forwards;
-}
-
 .calendar-days-container{
     display: flex;
     flex-direction: row;

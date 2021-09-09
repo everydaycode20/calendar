@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 
 import "../styles/calendar-days.css";
 
-const CalendarDays = ({ newMonth, daysInMonth, changeView, leftOrRight }) => {
+const CalendarDays = ({ daysInMonth, changeView, }) => {
     
     const months = [ "January", "February", "March", "April", "May", "June",
         "July", "August", "September", "October", "November", "December" ];
@@ -23,7 +23,7 @@ const CalendarDays = ({ newMonth, daysInMonth, changeView, leftOrRight }) => {
     };
     
     return (
-        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7 + 1}, 30px)`}} mounted={isMounted.toString()} pos={leftOrRight}>
+        <div className="calendar-days-container" style={{gridTemplateRows: `repeat(${daysInMonth.length/7 + 1}, 30px)`}} mounted={isMounted.toString()} >
             
                 {daysOfWeek.map((day, index) => {
                     return <span key={index}>{day.substring(0, 3)}</span>
@@ -36,7 +36,7 @@ const CalendarDays = ({ newMonth, daysInMonth, changeView, leftOrRight }) => {
                 return (
                     <div key={index} className="day-item" onClick={() => getDay({"day": day.day, "date": day.date, "month": day.month, "year": day.year})} style={{backgroundColor: currentDay && "#bcbcbc"}}>
 
-                        <span style={{color: day.month !== months[newMonth.month] ? "#d8d8d8" : "black"}}>{day.date}</span>
+                        <span style={{color: day.currentMonth ? "black" : "#d8d8d8"}}>{day.date}</span>
 
                     </div>
                 )

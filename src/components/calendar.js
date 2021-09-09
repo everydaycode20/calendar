@@ -16,8 +16,6 @@ const Calendar = () => {
     
     const [changeView, setChangeView] = useState(false);
 
-    const [leftOrRight, setLeftOrRight] = useState("");
-
     const months = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December" ];
 
     const daysOfWeek = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"];
@@ -40,12 +38,12 @@ const Calendar = () => {
             
             tempDate.setDate(tempDate.getDate() - 1);
             
-            objDaysOfMonth.unshift({"day": daysOfWeek[new Date(tempDate).getDay()], "date": new Date(tempDate).getDate(), "month": months[new Date(tempDate).getMonth()], "year": tempDate.getFullYear()});
+            objDaysOfMonth.unshift({"day": daysOfWeek[new Date(tempDate).getDay()], "date": new Date(tempDate).getDate(), "month": months[new Date(tempDate).getMonth()], "year": tempDate.getFullYear(), "currentMonth": false});
         }
 
         while (date.getMonth() === month ) {
             
-            objDaysOfMonth.push({"day": daysOfWeek[new Date(date).getDay()], "date": new Date(date).getDate(), "month": months[new Date(date).getMonth()], "year": date.getFullYear()});
+            objDaysOfMonth.push({"day": daysOfWeek[new Date(date).getDay()], "date": new Date(date).getDate(), "month": months[new Date(date).getMonth()], "year": date.getFullYear(), "currentMonth": true});
             
             date.setDate(date.getDate() + 1);
             
@@ -53,7 +51,7 @@ const Calendar = () => {
         
         while (objDaysOfMonth.length % 7 !== 0) {
             
-            objDaysOfMonth.push({"day": daysOfWeek[new Date(date).getDay()], "date": new Date(date).getDate(), "month": months[new Date(date).getMonth()], "year": date.getFullYear()});
+            objDaysOfMonth.push({"day": daysOfWeek[new Date(date).getDay()], "date": new Date(date).getDate(), "month": months[new Date(date).getMonth()], "year": date.getFullYear(), "currentMonth": false});
 
             date.setDate(date.getDate() + 1);
         }
@@ -71,9 +69,9 @@ const Calendar = () => {
     
     return (
         daysInMonth.length > 0 && <div className="calendar-main-container">
-            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView} setLeftOrRight={setLeftOrRight}/>
-            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year} changeView={changeView} leftOrRight={leftOrRight}/>}
-            {changeView && <CalendarMonths setNewMonth={setNewMonth} setChangeView={setChangeView}/>}
+            <CalendarControl setYear={setYear} year={year} setNewMonth={setNewMonth} newMonth={newMonth} setChangeView={setChangeView} changeView={changeView}/>
+            {!changeView && <CalendarDays newMonth={newMonth} setDaysInMonth={setDaysInMonth} daysInMonth={daysInMonth} setYear={setYear} year={year} changeView={changeView}/>}
+            {changeView && <CalendarMonths setNewMonth={setNewMonth} setChangeView={setChangeView} newMonth={newMonth} daysInMonth={daysInMonth}/>}
         </div>
     );
 
