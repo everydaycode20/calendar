@@ -1,5 +1,5 @@
 # Calendar React
 
-![gif](https://user-images.githubusercontent.com/63354464/132261648-e7d6cf09-9241-4ffb-9d9b-a040af662a70.gif)
+![gif](https://user-images.githubusercontent.com/63354464/132777929-4936d908-ab78-43a2-8553-381880ef50f7.gif)
 
 A simple calendar made with React.
